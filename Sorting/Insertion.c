@@ -11,19 +11,14 @@ void main()
         scanf("%d",&x[i]);
     }
 
-    for(j=0;j<n-1;j++)
+    for(j=1;j<n;j++)
     {
-        m=j+1;
-        if(x[m]<x[m-1] && (m-1)>=0)
-        {
-            while(x[m]<x[m-1])
-            {
-                temp=x[m];
-                x[m]=x[m-1];
-                x[m-1]=temp;
-                m--;
-            }
-        }
+       temp=x[j];
+       for(k=j;k>0 && temp<x[k-1];k--)
+       {
+            x[k]=x[k-1];     
+       }
+       x[k]=temp;
     }
 
     printf("Sorted elements:\n");
